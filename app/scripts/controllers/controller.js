@@ -40,7 +40,6 @@ controller('driversController',['$scope','exHandler','driverService',function($s
     
     var setColor = function(type){
         try{
-            a[0];
             angular.forEach($scope.colorObj,function(val,color){
             if(color === type){
                 $scope.colorObj[color] = true;
