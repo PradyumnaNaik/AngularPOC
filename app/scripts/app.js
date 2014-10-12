@@ -1,4 +1,5 @@
 angular.module('F1App',['ngRoute',
+                        'ExceptionHandler',
                         'F1App.controllers',
                         'F1App.services']).
 config(['$routeProvider', function($routeProvider){
