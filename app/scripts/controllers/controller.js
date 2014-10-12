@@ -16,6 +16,7 @@ controller('driversController',['$scope','exHandler','driverService',function($s
     
     $scope.checkColor = function(evt){
         try{
+            //probable Angular defect: ng-keypress/down/up don't seem to fire immediately on key press. Can cause issue if user types fast
             var color = $scope.color;
             if(color.length === 0){
                 angular.forEach($scope.colorObj,function(val,key){
