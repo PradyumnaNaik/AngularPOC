@@ -1,0 +1,12 @@
+<section>
+    <div>
+        <span class='colWidth' ng-class='{colorEnabled:colorObj.red}'>Red</span>
+        <span class='colWidth' ng-class='{colorEnabled:colorObj.yellow}'>Yellow</span>
+        <span class='colWidth' ng-class='{colorEnabled:colorObj.green}'>Green</span>
+        <span class='colWidth' ng-class='{colorEnabled:colorObj.blue}'>Blue</span>
+        <span class='colWidth' ng-class='{colorEnabled:colorObj.white}'>White</span>
+    </div>
+    <div>
+        <input type='text' ng-model='color' ng-keyup='checkColor($event)'>
+    </div>
+</section>

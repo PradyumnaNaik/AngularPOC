@@ -10,6 +10,9 @@ config(['$routeProvider', function($routeProvider){
     }).when('/driver/:id',{
         templateUrl:'views/driver.html',
         controller:'driverController'
+    }).when('/ngClassDemo',{
+        templateUrl:'views/ngClassDemo.html',
+        controller:'ngClassDemoController'
     }).otherwise({
         redirectTo:'/drivers'
     });

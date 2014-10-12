@@ -1,7 +1,30 @@
 angular.module('F1App.controllers',[]).
-controller('driversController',['$scope','exHandler','driverService',function($scope,exHandler,driverService){
+controller('driversController',['$scope','driverService',function($scope,driverService){
     $scope.driverList=[];
     $scope.color='';
+    
+    driverService.getDriverList().success(function(res){
+        $scope.driverList = res.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+    });
+}]).
+controller('driverController',['$scope','$routeParams','driverService',function($scope,$routeParams,driverService){
+    var id=$routeParams.id;
+    $scope.driver=null;
+    $scope.races=[];
+
+    driverService.getDriverDetails(id).then(function(res){
+        $scope.driver=res.MRData.StandingsTable.StandingsLists[0].DriverStandings[0];
+    }, function(err){
+        alert('An error occurred while fetching the driver details!');
+    });
+    
+    driverService.getDriverRaces(id).then(function(res){
+        $scope.races = res.MRData.RaceTable.Races;
+    },function(err){
+        alert('An error occurred while fetching the Race info!');
+    });
+}]).
+controller('ngClassDemoController',['$scope','exHandler',function($scope,exHandler){
     $scope.colorObj = {
         red:true,
         green:true,
@@ -10,13 +33,10 @@ controller('driversController',['$scope','exHandler','driverService',function($s
         yellow:true
     };
     
-    driverService.getDriverList().success(function(res){
-        $scope.driverList = res.MRData.StandingsTable.StandingsLists[0].DriverStandings;
-    });
-    
     $scope.checkColor = function(evt){
         try{
-            //probable Angular defect: ng-keypress/down/up don't seem to fire immediately on key press. Can cause issue if user types fast
+            //probable Angular defect: ng-keypress/down/up don't seem to fire immediately on key press. 
+            //Can cause issue if user types fast
             var color = $scope.color;
             if(color.length === 0){
                 angular.forEach($scope.colorObj,function(val,key){
@@ -39,7 +59,7 @@ controller('driversController',['$scope','exHandler','driverService',function($s
     };
     
     var setColor = function(type){
-        try{
+        try{            
             angular.forEach($scope.colorObj,function(val,color){
             if(color === type){
                 $scope.colorObj[color] = true;
@@ -49,25 +69,6 @@ controller('driversController',['$scope','exHandler','driverService',function($s
             });
         }catch(ex){
             throw ex;
-        }
-        
+        }        
     };
-
-}]).
-controller('driverController',['$scope','$routeParams','driverService',function($scope,$routeParams,driverService){
-    var id=$routeParams.id;
-    $scope.driver=null;
-    $scope.races=[];
-
-    driverService.getDriverDetails(id).then(function(res){
-        $scope.driver=res.MRData.StandingsTable.StandingsLists[0].DriverStandings[0];
-    }, function(err){
-        alert('An error occurred while fetching the driver details!');
-    });
-    
-    driverService.getDriverRaces(id).then(function(res){
-        $scope.races = res.MRData.RaceTable.Races;
-    },function(err){
-        alert('An error occurred while fetching the Race info!');
-    });
 }]);

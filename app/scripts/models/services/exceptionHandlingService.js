@@ -4,7 +4,7 @@ factory('exHandler',[function(){
         isDebug = true;
     ex.logError = function(err){
         if(isDebug){
-            alert(err.message);
+            alert(err.message +'\n\n'+err.stack);//or some fancy modal
         }else{
             //log the exception details to the server
         }    
