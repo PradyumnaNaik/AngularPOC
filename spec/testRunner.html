@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha test</title>
+
+<link rel="stylesheet" media="all" href="../lib/mocha.css">
+</head>
+ <body >
+
+    <div id="mocha"><p><a href=".">Index</a></p></div>
+
+    <div id="messages"></div>
+    <div id="fixtures"></div>
+
+
+    <script src="../lib/mocha.js"></script>
+    <script src="../lib/chai.js"></script>
+    <script src="../lib/chai-spies.js"></script>
+<script>mocha.setup('bdd')</script>
+    <script src="../lib/angular.js"></script>
+    <script src="../lib/angular-route.js"></script>
+    <script src="../lib/angular-mocks.js"></script>
+
+    <script src="../app/scripts/app.js"></script>
+    <script src="../app/scripts/controllers/controller.js"></script>
+    <script src="../app/scripts/models/services/services.js"></script>
+    <script src="../app/scripts/models/services/exceptionHandlingService.js"></script>
+
+    <script src="controller/ControllerTest.js"></script>
+    <script>mocha.run();</script>
+</body>
+</html>

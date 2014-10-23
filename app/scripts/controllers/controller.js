@@ -24,7 +24,7 @@ controller('driverController',['$scope','$routeParams','driverService',function(
         alert('An error occurred while fetching the Race info!');
     });
 }]).
-controller('ngClassDemoController',['$scope','exHandler',function($scope,exHandler){
+controller('ngClassDemoController',['$scope','exHandler','driverService',function($scope,exHandler,driverService){
     $scope.colorObj = {
         red:true,
         green:true,
@@ -33,7 +33,7 @@ controller('ngClassDemoController',['$scope','exHandler',function($scope,exHandl
         yellow:true
     };
     
-    $scope.checkColor = function(evt){
+    $scope.checkColor = function(){
         try{
             //probable Angular defect: ng-keypress/down/up don't seem to fire immediately on key press. 
             //Can cause issue if user types fast
@@ -46,29 +46,15 @@ controller('ngClassDemoController',['$scope','exHandler',function($scope,exHandl
             }
 
             switch(color[0].toLowerCase()){
-                case 'r':setColor('red');break;
-                case 'b':setColor('blue');break;
-                case 'g':setColor('green');break;
-                case 'w':setColor('white');break;
-                case 'y':setColor('yellow');break;
-                default: setColor('');break;
-            };
+                case 'r':$scope.colorObj = driverService.setColor('red',$scope.colorObj);break;
+                case 'b':$scope.colorObj = driverService.setColor('blue',$scope.colorObj);break;
+                case 'g':$scope.colorObj = driverService.setColor('green',$scope.colorObj);break;
+                case 'w':$scope.colorObj = driverService.setColor('white',$scope.colorObj);break;
+                case 'y':$scope.colorObj = driverService.setColor('yellow',$scope.colorObj);break;
+                default: $scope.colorObj = driverService.setColor('',$scope.colorObj);break;
+            }
         }catch(ex){
             exHandler.logError(ex);
         }
-    };
-    
-    var setColor = function(type){
-        try{            
-            angular.forEach($scope.colorObj,function(val,color){
-            if(color === type){
-                $scope.colorObj[color] = true;
-            }else{
-                $scope.colorObj[color] = false;
-            }
-            });
-        }catch(ex){
-            throw ex;
-        }        
     };
 }]);
