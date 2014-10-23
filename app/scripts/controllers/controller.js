@@ -46,12 +46,12 @@ controller('ngClassDemoController',['$scope','exHandler','driverService',functio
             }
 
             switch(color[0].toLowerCase()){
-                case 'r':driverService.setColor('red',$scope.colorObj);break;
-                case 'b':driverService.setColor('blue',$scope.colorObj);break;
-                case 'g':driverService.setColor('green',$scope.colorObj);break;
-                case 'w':driverService.setColor('white',$scope.colorObj);break;
-                case 'y':driverService.setColor('yellow',$scope.colorObj);break;
-                default: driverService.setColor('',$scope.colorObj);break;
+                case 'r':$scope.colorObj = driverService.setColor('red');break;
+                case 'b':$scope.colorObj = driverService.setColor('blue');break;
+                case 'g':$scope.colorObj = driverService.setColor('green');break;
+                case 'w':$scope.colorObj = driverService.setColor('white');break;
+                case 'y':$scope.colorObj = driverService.setColor('yellow');break;
+                default: $scope.colorObj = driverService.setColor('');break;
             }
         }catch(ex){
             exHandler.logError(ex);
