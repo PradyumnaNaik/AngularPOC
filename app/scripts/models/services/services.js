@@ -39,13 +39,12 @@ angular.module('F1App.services',[]).factory('driverService',['$http','$q',functi
 
     drivers.setColor = function(type, colorObj){
         angular.forEach(colorObj,function(val,color){
-        if(color === type){
-            colorObj[color] = true;
-        }else{
-            colorObj[color] = false;
-        }
+            if(color === type){
+                colorObj[color] = true;
+            }else{
+                colorObj[color] = false;
+            }
         });
-        return colorObj;
     };
 
     return drivers;
