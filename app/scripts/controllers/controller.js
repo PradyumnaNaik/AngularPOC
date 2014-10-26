@@ -25,13 +25,7 @@ controller('driverController',['$scope','$routeParams','driverService',function(
     });
 }]).
 controller('ngClassDemoController',['$scope','exHandler','driverService',function($scope,exHandler,driverService){
-    $scope.colorObj = {
-        red:true,
-        green:true,
-        blue:true,
-        white:true,
-        yellow:true
-    };
+    $scope.colorObj = driverService.colorObj;
     
     $scope.checkColor = function(){
         try{
@@ -40,7 +34,7 @@ controller('ngClassDemoController',['$scope','exHandler','driverService',functio
             var color = $scope.color;
             if(color.length === 0){
                 angular.forEach($scope.colorObj,function(val,key){
-                  $scope.colorObj[key] = true;                
+                  $scope.colorObj[key] = true;
                 });
                 return;
             }

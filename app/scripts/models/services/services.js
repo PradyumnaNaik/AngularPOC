@@ -37,14 +37,16 @@ angular.module('F1App.services',[]).factory('driverService',['$http','$q',functi
         });
     };
 
-    drivers.setColor = function(type){
-       var colorObj = {
+    drivers.colorObj = {
                         red:true,
                         green:true,
                         blue:true,
                         white:true,
                         yellow:true
                     };
+
+    drivers.setColor = function(type){
+       var colorObj = this.colorObj;
         angular.forEach(colorObj,function(val,color){
             if(color === type){
                 colorObj[color] = true;
@@ -52,7 +54,7 @@ angular.module('F1App.services',[]).factory('driverService',['$http','$q',functi
                 colorObj[color] = false;
             }
         });
-        return colorObj;
+        return this.colorObj;
     };
 
     return drivers;
