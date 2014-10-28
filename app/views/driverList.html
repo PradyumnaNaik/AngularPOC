@@ -1,5 +1,5 @@
 <div>
-    <a href="#/ngClassDemo">ng-Class Demo</a>
+    <a ng-href="#/ngClassDemo">ng-Class Demo</a>
 </div>
 <br>
 <br>
@@ -16,7 +16,7 @@
         <tbody>
             <tr ng-repeat='drivers in driverList'>
                 <td class="colWidth" ng-bind='$index +1'></td>
-                <td class="colWidth"><a href='#/driver/{{drivers.Driver.driverId}}'>
+                <td class="colWidth"><a ng-href='#/driver/{{drivers.Driver.driverId}}'>
                         <span ng-bind='drivers.Driver.givenName'></span>&nbsp;
                         <span ng-bind='drivers.Driver.familyName'></span>
                     </a>
