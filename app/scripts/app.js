@@ -1,4 +1,5 @@
-angular.module('F1App',['ngRoute',
+angular.module('F1App',['ui.bootstrap',
+                        'ngRoute',
                         'ExceptionHandler',
                         'F1App.controllers',
                         'F1App.services']).

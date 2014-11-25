@@ -10,3 +10,11 @@
         <input type='text' ng-model='color' ng-keyup='checkColor()'>
     </div>
 </section>
+<hr>
+<section>
+<div>Modal Example: the modal will be displayed after 5 seconds</div>
+    <div  ng-controller="ModalDemoCtrl">
+        <!--content from the modal can be sent to the parent controller and read in the parent controller's scope-->
+        <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+    </div>
+</section>
